@@ -1,4 +1,4 @@
-FROM centos
+FROM centos:centos7
 
 RUN yum upgrade -y
 RUN yum install -y gcc ruby ruby-devel make libffi-devel rpm-build rpm-sign
