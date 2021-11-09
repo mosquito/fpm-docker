@@ -1,26 +1,20 @@
 
-all: debian10 debian9 debian8 centos7 xenial bionic
+all: bionic focal hirsute impish
 
-debian8:
-	docker build -t fpm:debian8 --force-rm --compress --squash -f Dockerfile.debian8 .
-
-debian9:
-	docker build -t fpm:debian9 --force-rm --compress --squash -f Dockerfile.debian9 .
-
-debian10:
-	docker build -t fpm:debian10 --force-rm --compress --squash -f Dockerfile.debian10 .
-
-centos7:
-	docker build -t fpm:centos7 --force-rm --compress --squash -f Dockerfile.centos7 .
-
-xenial:
-	docker build -t fpm:xenial --force-rm --compress --squash -f Dockerfile.xenial .
+focal:
+	docker build -t fpm:focal --force-rm --compress -f Dockerfile.focal .
 
 bionic:
-	docker build -t fpm:bionic --force-rm --compress --squash -f Dockerfile.bionic .
+	docker build -t fpm:bionic --force-rm --compress -f Dockerfile.bionic .
+
+hirsute:
+	docker build -t fpm:hirsute --force-rm --compress -f Dockerfile.hirsute .
+
+impish:
+	docker build -t fpm:impish --force-rm --compress -f Dockerfile.impish .
 
 upload:
-	for i in debian8 debian9 debian10 centos7 xenial bionic; \
+	for i in bionic focal hirsute impish; \
 		do docker tag fpm:$$i mosquito/fpm:$$i; \
 		   docker push mosquito/fpm:$$i; \
 	done

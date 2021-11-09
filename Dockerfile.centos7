@@ -1,9 +1,0 @@
-FROM centos:centos7
-
-RUN yum upgrade -y
-RUN yum install -y gcc ruby ruby-devel make libffi-devel rpm-build rpm-sign
-RUN gem install ruby-xz -v 0.2.3 --no-rdoc --no-ri
-RUN gem install fpm --no-rdoc --no-ri
-RUN yum remove -y ruby-devel rpm-devel gcc 
-RUN yum autoremove -y
-RUN yum clean all
